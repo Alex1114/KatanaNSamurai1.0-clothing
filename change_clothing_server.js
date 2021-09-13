@@ -25,10 +25,6 @@ var sleep_switch = 1;
 const database = {
   get_data: function() {
     return adminClient.query(q.Get(q.Ref(q.Collection('Metadata'), String(value_shogunate.tokenId))));
-  },
-  past_data: function() {
-    // console.log(log_all);
-    // To Do
   }
 }
 
@@ -40,7 +36,6 @@ data.events.shogunateEvent({
 
   // console.log(event.returnValues);
   log_all = event.returnValues;
-  var past_event = database.past_data.call(log_all);
 
 }).on("data", function (event) {
 
@@ -67,16 +62,87 @@ data.events.shogunateEvent({
     metadata.then(function(response) {
       response.data.attributes[9] = {trait_type: 'Shogunate', value: String(value_shogunate.to)}
 
+
       async function change_shoungate_clothing(){
+
+        // Kamakura:Cross
+        // Muromachi:Star-print 
+        // Edo:Chrysanthemum
+        // Oda:Checkered
+        // Imperial:Cherry Blossom
+
+        // S:Pink, M:Red, L:Green, XL:Blue
+
+        var clothes_name;
+        if (value_shogunate.to == "Kamakura S"){
+          clothes_name = "Cross S";
+        }
+        else if (value_shogunate.to == "Kamakura M"){
+          clothes_name = "Cross M";
+        } 
+        else if (value_shogunate.to == "Kamakura L"){
+          clothes_name = "Cross L";
+        } 
+        else if (value_shogunate.to == "Kamakura XL"){
+          clothes_name = "Cross XL";
+        } 
+        else if (value_shogunate.to == "Muromachi S"){
+          clothes_name = "Star-print S";
+        } 
+        else if (value_shogunate.to == "Muromachi M"){
+          clothes_name = "Star-print M";
+        } 
+        else if (value_shogunate.to == "Muromachi L"){
+          clothes_name = "Star-print L";
+        } 
+        else if (value_shogunate.to == "Muromachi XL"){
+          clothes_name = "Star-print XL";
+        }
+        else if (value_shogunate.to == "Edo S"){
+          clothes_name = "Chrysanthemum S";
+        } 
+        else if (value_shogunate.to == "Edo M"){
+          clothes_name = "Chrysanthemum M";
+        } 
+        else if (value_shogunate.to == "Edo L"){
+          clothes_name = "Chrysanthemum L";
+        } 
+        else if (value_shogunate.to == "Edo XL"){
+          clothes_name = "Chrysanthemum Xl";
+        } 
+        else if (value_shogunate.to == "Oda S"){
+          clothes_name = "Checkered S";
+        }         
+        else if (value_shogunate.to == "Oda M"){
+          clothes_name = "Checkered M";
+        }          
+        else if (value_shogunate.to == "Oda L"){
+          clothes_name = "Checkered L";
+        }   
+        else if (value_shogunate.to == "Oda XL"){
+          clothes_name = "Checkered XL";
+        }   
+        else if (value_shogunate.to == "Imperial S"){
+          clothes_name = "Cherry Blossom S";
+        }   
+        else if (value_shogunate.to == "Imperial M"){
+          clothes_name = "Cherry Blossom M";
+        }   
+        else if (value_shogunate.to == "Imperial L"){
+          clothes_name = "Cherry Blossom L";
+        }   
+        else if (value_shogunate.to == "Imperial XL"){
+          clothes_name = "Cherry Blossom XL";
+        }   
 
         const metadataFilter = {
           name: "Katana N' Samurai" +　value_shogunate.tokenId + ".jpg",
-          // keyvalues: {
-          //   power_value: {
-          //       value: '13',
-          //       op: 'eq'
-          //   }
-          // }
+          keyvalues: {
+            clothes: {
+              value: String(clothes_name),
+              op: 'eq'
+            }
+          }
         };
         const filters = {
             status : 'pinned',
@@ -87,8 +153,7 @@ data.events.shogunateEvent({
 
         let get_IPFS_URI = await pinata.pinList(filters).then((result) => {
             // Change URI
-            response.data.image = "https://gateway.pinata.cloud/ipfs/" + result.rows[0].ipfs_pin_hash + "/success"
-        }).catch((err) => {
+            response.data.image = "https://gateway.pinata.cloud/ipfs/" + result.rows[0].ipfs_pin_hash}).catch((err) => {
             console.log(err);
         });
         
@@ -101,17 +166,8 @@ data.events.shogunateEvent({
       change_shoungate_clothing();
 
     })
-
   }
-
-
 }).on('error', console.error);
-
-
-
-
-
-
 
 
 
