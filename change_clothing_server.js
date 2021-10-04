@@ -69,74 +69,94 @@ data.events.shogunateEvent({
         // Muromachi:Star-print 
         // Edo:Chrysanthemum
         // Oda:Checkered
-        // Imperial:Cherry Blossom
-
-        // S:Pink, M:Red, L:Green, XL:Blue
+        // Imperial House:Cherry Blossom
 
         var clothes_name;
+        var id;
+
         if (value_shogunate.to == "Kamakura S"){
           clothes_name = "Cross S";
+          id = "B13"
         }
         else if (value_shogunate.to == "Kamakura M"){
           clothes_name = "Cross M";
+          id = "B14"
         } 
         else if (value_shogunate.to == "Kamakura L"){
           clothes_name = "Cross L";
+          id = "B15"
         } 
         else if (value_shogunate.to == "Kamakura XL"){
           clothes_name = "Cross XL";
+          id = "B16"
         } 
         else if (value_shogunate.to == "Muromachi S"){
           clothes_name = "Star-print S";
+          id = "B17"
         } 
         else if (value_shogunate.to == "Muromachi M"){
           clothes_name = "Star-print M";
+          id = "B18"
         } 
         else if (value_shogunate.to == "Muromachi L"){
           clothes_name = "Star-print L";
+          id = "B19"
         } 
         else if (value_shogunate.to == "Muromachi XL"){
           clothes_name = "Star-print XL";
+          id = "B20"
         }
         else if (value_shogunate.to == "Edo S"){
           clothes_name = "Chrysanthemum S";
+          id = "B09"
         } 
         else if (value_shogunate.to == "Edo M"){
           clothes_name = "Chrysanthemum M";
+          id = "B10"
         } 
         else if (value_shogunate.to == "Edo L"){
           clothes_name = "Chrysanthemum L";
+          id = "B11"
         } 
         else if (value_shogunate.to == "Edo XL"){
-          clothes_name = "Chrysanthemum Xl";
+          clothes_name = "Chrysanthemum XL";
+          id = "B12"
         } 
         else if (value_shogunate.to == "Oda S"){
           clothes_name = "Checkered S";
+          id = "B05"
         }         
         else if (value_shogunate.to == "Oda M"){
           clothes_name = "Checkered M";
+          id = "B06"
         }          
         else if (value_shogunate.to == "Oda L"){
           clothes_name = "Checkered L";
+          id = "B07"
         }   
         else if (value_shogunate.to == "Oda XL"){
           clothes_name = "Checkered XL";
+          id = "B08"
         }   
-        else if (value_shogunate.to == "Imperial S"){
+        else if (value_shogunate.to == "Imperial House S"){
           clothes_name = "Cherry Blossom S";
+          id = "B01"
         }   
-        else if (value_shogunate.to == "Imperial M"){
+        else if (value_shogunate.to == "Imperial House M"){
           clothes_name = "Cherry Blossom M";
+          id = "B02"
         }   
-        else if (value_shogunate.to == "Imperial L"){
+        else if (value_shogunate.to == "Imperial House L"){
           clothes_name = "Cherry Blossom L";
+          id = "B03"
         }   
-        else if (value_shogunate.to == "Imperial XL"){
+        else if (value_shogunate.to == "Imperial House XL"){
           clothes_name = "Cherry Blossom XL";
+          id = "B04"
         }   
 
         const metadataFilter = {
-          name: "Katana N' Samurai" +　value_shogunate.tokenId + ".jpg",
+          name: "KNS" +　value_shogunate.tokenId + id + ".jpg",
           keyvalues: {
             clothes: {
               value: String(clothes_name),
@@ -177,23 +197,3 @@ data.events.shogunateEvent({
 
 
 
-
-
-
-// Creat FaunaDB Data
-// var creat = adminClient.query(q.Create(q.Ref(q.Collection('Metadata'), 50), {data: {
-//             tokenId: 7,
-//             name: "Katana N' Samurai #0007",
-//             image: "https://gateway.pinata.cloud/ipfs/QmYriiz2wNF52KVwujzYCYS2Ld3EhBbAGCCLVLcvozpc54",
-//             description: "Brother, our paths cross once again. Will our swords do the same?",
-//             attributes: [{trait_type: "Rankings", "value": 2818, "max_value": 10000},
-//                         {trait_type: "Power Value", "value": 12, "max_value": 66},
-//                         {trait_type: "Location", "value": "大山 Mount Oyama"},
-//                         {trait_type: "Clothes", "value": "くまいささぐるま Kuma i-sa saguru ma"},
-//                         {trait_type: "Type", "value": "人々 Human"},
-//                         {trait_type: "Eyes", "value": "礼 Respect"},
-//                         {trait_type: "Hats and Hairstyles", "value": "本多髷 Honda Mage"},
-//                         {trait_type: "Accesories", "value": "チェーンのめがね Glasses with Chain"},
-//                         {trait_type: "Class Status", "value": "Komono"},
-//                         {trait_type: "Shogunate", "value": 'None'}]}
-//   }));
